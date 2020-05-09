@@ -2,8 +2,8 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  background-color:black
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: black;
 }
 
 div.next-pieces * {
@@ -12,13 +12,12 @@ div.next-pieces * {
   height: 150px;
   display: block;
 }
-div.conteneur{
-
+div.conteneur {
   display: flex;
   flex-direction: row;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 div#score {

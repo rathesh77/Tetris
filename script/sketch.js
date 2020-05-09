@@ -9,8 +9,8 @@ function setup() {
 
 function init() {
   clearInterval(timer)
-score = 0
-document.getElementById('score').innerText ="Score : "+ score
+  score = 0
+  document.getElementById('score').innerText = "Score : " + score
 
   pieces.push(Math.floor(Math.random() * pattern.indices.length))
   pieces.push(Math.floor(Math.random() * pattern.indices.length))
@@ -106,7 +106,7 @@ function clearRow() {
     var ligne
     if (seen[Object.keys(seen)[i]].length >= width / sizes) {
       score++
-      document.getElementById('score').innerText ="Score : "+score
+      document.getElementById('score').innerText = "Score : " + score
       for (var j = 0; j < p.length; j++) {
         p[j].deleteRow(Object.keys(seen)[i])
         ligne = i
@@ -128,7 +128,7 @@ function clearRow() {
 function updatePrevisualization() {
 
   var i = 0
-  Array.prototype.slice.call( document.getElementsByClassName('next-pieces')[0].children).forEach(element => {
+  Array.prototype.slice.call(document.getElementsByClassName('next-pieces')[0].children).forEach(element => {
     element.style.backgroundImage = "url('img/" + pieces[i] + ".png')"
     i++
   });
