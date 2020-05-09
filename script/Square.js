@@ -1,4 +1,4 @@
-let Square = function (x, y, shape) {
+let Square = function(x, y,shape) {
   this.x = x
   this.y = y
   this.stationary = false
@@ -10,21 +10,21 @@ let Square = function (x, y, shape) {
   for (var i = 0; i < pattern.indices[this.pattern][this.longueur].length; i++)
     this.components.push([this.x + (sizes * pattern.indices[this.pattern][this.longueur][i][0]), this.y + (sizes * pattern.indices[this.pattern][this.longueur][i][1])])
 }
-Square.prototype.show = function () {
+Square.prototype.show = function() {
   fill(this.c)
   for (var i = 0; i < this.components.length; i++) {
     if (this.components[i][0] != undefined && this.components[i][1] != undefined && this.components[i].length != 0)
       rect(this.components[i][0], this.components[i][1], sizes, sizes)
   }
 }
-Square.prototype.updatePos = function () {
+Square.prototype.updatePos = function() {
 
   this.components = []
   for (var i = 0; i < pattern.indices[this.pattern][this.longueur].length; i++)
     this.components.push([this.x + (sizes * pattern.indices[this.pattern][this.longueur][i][0]), this.y + (sizes * pattern.indices[this.pattern][this.longueur][i][1])])
 }
 
-Square.prototype.fall = function () {
+Square.prototype.fall = function() {
 
   if (this.stationary)
     return
@@ -60,7 +60,7 @@ Square.prototype.fall = function () {
     i++
   });
 }
-Square.prototype.checkXAxis = function (dir) {
+Square.prototype.checkXAxis = function(dir) {
 
   for (var i = 0; i < this.components.length; i++) {
     if ((seen[this.components[i][1]].length != 0 && seen[this.components[i][1]].indexOf(this.components[i][0] + (sizes * dir)) != -1) || (this.components[i][0] + (sizes * dir) >= width)) {
@@ -69,7 +69,7 @@ Square.prototype.checkXAxis = function (dir) {
   }
   return true
 }
-Square.prototype.checkYAxis = function () {
+Square.prototype.checkYAxis = function() {
 
   for (var i = 0; i < this.components.length; i++) {
     if (seen[this.components[i][1] + sizes] == undefined)
@@ -80,17 +80,17 @@ Square.prototype.checkYAxis = function () {
   }
   return true
 }
-Square.prototype.move = function (x, y) {
+Square.prototype.move = function(x, y) {
   this.x += sizes * x
   this.y += sizes * y
 }
-Square.prototype.rotate = function () {
+Square.prototype.rotate = function() {
   if (this.longueur == pattern.indices[this.pattern].length - 1)
     this.longueur = 0
   else
     this.longueur++
 }
-Square.prototype.deleteRow = function (row) {
+Square.prototype.deleteRow = function(row) {
   for (var i = 0; i < this.components.length; i++) {
     if (this.components[i][1] == parseInt(row)) {
       this.components[i] = []
@@ -102,6 +102,6 @@ Square.prototype.deleteRow = function (row) {
     }
   }
 }
-Square.prototype.isStationnary = function () {
+Square.prototype.isStationnary = function() {
   return this.stationary
 }

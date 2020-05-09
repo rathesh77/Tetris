@@ -9,8 +9,8 @@ function setup() {
 
 function init() {
   clearInterval(timer)
-  score = 0
-  document.getElementById('score').innerText = "Score : " + score
+score = 0
+document.getElementById('score').innerText ="Score : "+ score
 
   pieces.push(Math.floor(Math.random() * pattern.indices.length))
   pieces.push(Math.floor(Math.random() * pattern.indices.length))
@@ -37,7 +37,6 @@ function init() {
 function draw() {
   background(51);
   drawGrid()
-
   for (var i = 0; i < p.length; i++) {
 
     p[i].show()
@@ -72,10 +71,18 @@ function keyPressed() {
 function newPiece() {
   var x = placementsX[10]
   var y = placementsY[1]
+
+  //console.log(document.getElementsByClassName('next-pieces')[0].children[0].style.backgroundImage)
+  //console.log(pieces)
   p.push(new Square(x, y, pieces[0]))
+
+  document.getElementsByClassName('next-pieces')[0].children[0].style.backgroundImage = "url('img/" + pieces[1] + ".png')"
   pieces.shift()
   pieces.push(Math.floor(Math.random() * pattern.indices.length))
-  updatePrevisualization()
+
+  updateDivs()
+
+
 }
 
 function generateGrid() {
@@ -94,8 +101,8 @@ function drawGrid() {
   for (var i = 0; i < height / sizes; i++) {
 
     for (var j = 0; j < width / sizes; j++) {
-      fill(0)
-      stroke(51)
+      fill(51)
+      stroke(0)
       rect(j * sizes, i * sizes, sizes, sizes)
     }
   }
@@ -106,7 +113,7 @@ function clearRow() {
     var ligne
     if (seen[Object.keys(seen)[i]].length >= width / sizes) {
       score++
-      document.getElementById('score').innerText = "Score : " + score
+      document.getElementById('score').innerText ="Score : "+score
       for (var j = 0; j < p.length; j++) {
         p[j].deleteRow(Object.keys(seen)[i])
         ligne = i
@@ -125,10 +132,10 @@ function clearRow() {
   }
 
 }
-function updatePrevisualization() {
+function updateDivs() {
 
   var i = 0
-  Array.prototype.slice.call(document.getElementsByClassName('next-pieces')[0].children).forEach(element => {
+  Array.prototype.slice.call( document.getElementsByClassName('next-pieces')[0].children).forEach(element => {
     element.style.backgroundImage = "url('img/" + pieces[i] + ".png')"
     i++
   });
